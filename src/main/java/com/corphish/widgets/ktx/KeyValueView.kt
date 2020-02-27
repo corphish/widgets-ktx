@@ -111,11 +111,11 @@ class KeyValueView(context: Context,
                 continue
             }
             if (property == R.styleable.KeyValueView_keyTextColor) {
-                setKeyTextColor(typedArray.getColor(property, keyTextView.currentTextColor))
+                keyTextColor = typedArray.getColor(property, keyTextView.currentTextColor)
                 continue
             }
             if (property == R.styleable.KeyValueView_valueTextColor) {
-                setValueTextColor(typedArray.getColor(property, valueTextView.currentTextColor))
+                valueTextColor = typedArray.getColor(property, valueTextView.currentTextColor)
                 continue
             }
             if (property == R.styleable.KeyValueView_keyBackgroundColor) {
@@ -123,7 +123,7 @@ class KeyValueView(context: Context,
                 if (keyTextView.background is ColorDrawable) {
                     color = (keyTextView.background as ColorDrawable).color
                 }
-                setKeyBackgroundColor(typedArray.getColor(property, color))
+                keyBackgroundColor = typedArray.getColor(property, color)
                 continue
             }
             if (property == R.styleable.KeyValueView_valueBackgroundColor) {
@@ -131,7 +131,7 @@ class KeyValueView(context: Context,
                 if (valueTextView.background is ColorDrawable) {
                     color = (valueTextView.background as ColorDrawable).color
                 }
-                setValueBackgroundColor(typedArray.getColor(property, color))
+                valueBackgroundColor = typedArray.getColor(property, color)
                 continue
             }
             if (property == R.styleable.KeyValueView_methodForValue) {
@@ -321,36 +321,40 @@ class KeyValueView(context: Context,
         get() = valueTextView.typeface
 
     /**
-     * Sets text color of key
-     * @param color Color to set
+     * Key text color property
      */
-    fun setKeyTextColor(color: Int) {
-        keyTextView.setTextColor(color)
-    }
+    var keyTextColor: Int
+        get() = keyTextView.currentTextColor
+        set(value) {
+            keyTextView.setTextColor(value)
+        }
 
     /**
-     * Sets text color of value
-     * @param color Color to set
+     * Value text color property
      */
-    fun setValueTextColor(color: Int) {
-        valueTextView.setTextColor(color)
-    }
+    var valueTextColor: Int
+        get() = valueTextView.currentTextColor
+        set(value) {
+            valueTextView.setTextColor(value)
+        }
 
     /**
-     * Sets background color of key
-     * @param color Color to set
+     * Value background color property
      */
-    fun setKeyBackgroundColor(color: Int) {
-        keyTextView.setBackgroundColor(color)
-    }
+    var keyBackgroundColor: Int
+        get() = (keyTextView.background as ColorDrawable).color
+        set(value) {
+            valueTextView.setBackgroundColor(value)
+        }
 
     /**
-     * Sets background color of value
-     * @param color Color to set
+     * Value background color property
      */
-    fun setValueBackgroundColor(color: Int) {
-        valueTextView.setBackgroundColor(color)
-    }
+    var valueBackgroundColor: Int
+        get() = (valueTextView.background as ColorDrawable).color
+        set(value) {
+            valueTextView.setBackgroundColor(value)
+        }
 
     /**
      * Set drawables for key
