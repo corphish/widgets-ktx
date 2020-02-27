@@ -54,11 +54,11 @@ class KeyValueView(context: Context,
         for (i in 0 until count) {
             val property = typedArray.getIndex(i)
             if (property == R.styleable.KeyValueView_keyText) {
-                setKeyText(typedArray.getText(property).toString())
+                keyText = typedArray.getText(property).toString()
                 continue
             }
             if (property == R.styleable.KeyValueView_valueText) {
-                if (!methodSetValue) setValueText(typedArray.getText(property).toString())
+                if (!methodSetValue) valueText = typedArray.getText(property).toString()
                 continue
             }
             if (property == R.styleable.KeyValueView_keySize) {
@@ -162,19 +162,11 @@ class KeyValueView(context: Context,
             val clazz = Class.forName(className)
             val method = clazz.getDeclaredMethod(methodExtracted)
             val value = method.invoke(context) as String
-            setValueText(value)
+            valueText = value
             methodSetValue = true
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
-
-    /**
-     * Sets text into the **Key** field (or TextView in this case)
-     * @param text Text to set
-     */
-    fun setKeyText(text: String) {
-        keyTextView.text = text
     }
 
     /**
@@ -187,19 +179,25 @@ class KeyValueView(context: Context,
 
     /**
      * Sets text into the **Value** field (or TextView in this case)
-     * @param text Text to set
-     */
-    fun setValueText(text: String) {
-        valueTextView.text = text
-    }
-
-    /**
-     * Sets text into the **Value** field (or TextView in this case)
      * @param resId String resource id
      */
     fun setValueText(@StringRes resId: Int) {
         valueTextView.setText(resId)
     }
+
+    /**
+     * Property access for key text
+     */
+    var keyText: String
+        get() = keyTextView.text.toString()
+        set(value) { keyTextView.text = value }
+
+    /**
+     * Property access for value text
+     */
+    var valueText: String
+        get() = valueTextView.text.toString()
+        set(value) { valueTextView.text = value }
 
     /**
      * Enables or disables each view as needed
