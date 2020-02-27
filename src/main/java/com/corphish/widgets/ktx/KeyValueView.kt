@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
+import androidx.core.widget.TextViewCompat
 
 /**
  * Key Value view
@@ -402,7 +403,7 @@ class KeyValueView(context: Context,
      * @param appearance Appearance
      */
     fun setKeyTextAppearance(@StyleRes appearance: Int) {
-        keyTextView.setTextAppearance(context, appearance)
+        TextViewCompat.setTextAppearance(keyTextView, appearance)
     }
 
     /**
@@ -410,7 +411,7 @@ class KeyValueView(context: Context,
      * @param appearance Appearance
      */
     fun setValueTextAppearance(@StyleRes appearance: Int) {
-        valueTextView.setTextAppearance(context, appearance)
+        TextViewCompat.setTextAppearance(valueTextView, appearance)
     }
 
     init {
