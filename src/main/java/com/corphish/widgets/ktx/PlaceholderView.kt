@@ -67,11 +67,11 @@ class PlaceholderView(context: Context,
         for (i in 0 until count) {
             val property = typedArray.getIndex(i)
             if (property == R.styleable.PlaceholderView_titleText) {
-                setTitle(typedArray.getText(property).toString())
+                title = typedArray.getText(property).toString()
                 continue
             }
             if (property == R.styleable.PlaceholderView_descriptionText) {
-                setDescription(typedArray.getText(property).toString())
+                description = typedArray.getText(property).toString()
                 continue
             }
             if (property == R.styleable.PlaceholderView_titleSize) {
@@ -88,7 +88,7 @@ class PlaceholderView(context: Context,
             }
             if (property == R.styleable.PlaceholderView_srcCompat) {
                 val drawable = typedArray.getResourceId(property, R.drawable.ic_sentiment_neutral)
-                setImageResourceId(drawable)
+                imageResourceId = drawable
                 continue
             }
             if (property == R.styleable.PlaceholderView_imageHeight) {
@@ -119,14 +119,6 @@ class PlaceholderView(context: Context,
     }
 
     /**
-     * Sets description of this view
-     * @param description Description string
-     */
-    fun setDescription(description: String) {
-        descriptionTextView.text = description
-    }
-
-    /**
      * Sets title of this view
      * @param title Title res id
      */
@@ -135,20 +127,28 @@ class PlaceholderView(context: Context,
     }
 
     /**
-     * Sets title of this view
-     * @param title Title string
+     * Description property
      */
-    fun setTitle(title: String) {
-        titleTextView.text = title
-    }
+    var description: String
+        get() = descriptionTextView.text.toString()
+        set(value) {
+            descriptionTextView.text = value
+        }
 
     /**
-     * Sets the resource id for the imageView
-     * @param resourceId Resource id for the image to be shown
+     * Title property
      */
-    fun setImageResourceId(@DrawableRes resourceId: Int) {
-        imageView.setImageResource(resourceId)
-    }
+    var title: String
+        get() = titleTextView.text.toString()
+        set(value) {
+            titleTextView.text = value
+        }
+
+    @DrawableRes
+    var imageResourceId: Int = R.drawable.ic_sentiment_neutral
+        set(value) {
+            imageView.setImageResource(value)
+        }
 
     /**
      * Sets the drawable for the imageView
