@@ -7,11 +7,11 @@
     android:layout_gravity="center"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_sentiment_neutral_black_64dp"
+        app:srcCompat="@drawable/ic_sentiment_neutral"
         android:tint="@color/placeholder_tint"
         android:id="@+id/placeholder_image"/>
 
