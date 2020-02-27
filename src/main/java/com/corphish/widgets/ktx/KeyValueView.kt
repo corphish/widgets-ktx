@@ -41,9 +41,9 @@ import androidx.core.widget.TextViewCompat
  * One showing the heading or key and the other one showing its value
  * Written as separate library cause it is used it widely
  */
-class KeyValueView(context: Context,
-                   attributeSet: AttributeSet? = null,
-                   defStyle: Int = 0) : LinearLayout(context, attributeSet, defStyle) {
+class KeyValueView @JvmOverloads constructor(context: Context,
+                                             attributeSet: AttributeSet? = null,
+                                             defStyle: Int = 0) : LinearLayout(context, attributeSet, defStyle) {
     /**
      * Just in case user wants to use the full capabilities of a TextView or do advanced stuff
      * @return Key

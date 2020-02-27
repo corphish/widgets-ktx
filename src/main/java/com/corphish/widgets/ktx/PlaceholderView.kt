@@ -37,9 +37,9 @@ import androidx.appcompat.widget.AppCompatImageView
  * Placeholder view to show in case there is nothing to show in certain situations
  * For example, use this to show empty search results or failure screen
  */
-class PlaceholderView(context: Context,
-                      attributeSet: AttributeSet? = null,
-                      defStyle: Int = 0) : RelativeLayout(context, attributeSet, defStyle) {
+class PlaceholderView @JvmOverloads constructor(context: Context,
+                                                attributeSet: AttributeSet? = null,
+                                                defStyle: Int = 0) : RelativeLayout(context, attributeSet, defStyle) {
     /**
      * Make the views used user accessible for advanced stuff
      * @return Description textview
