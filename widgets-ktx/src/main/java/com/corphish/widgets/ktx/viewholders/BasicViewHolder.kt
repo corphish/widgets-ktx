@@ -28,7 +28,14 @@ open class BasicViewHolder(view: View, viewList: List<Int>) : RecyclerView.ViewH
 
     init {
         for (id in viewList) {
-            _views[id] = view.findViewById(id)
+            if (id == ID_SELF)
+                _views[id] = view
+            else
+                _views[id] = view.findViewById(id)
         }
+    }
+
+    companion object {
+        const val ID_SELF = View.NO_ID
     }
 }
