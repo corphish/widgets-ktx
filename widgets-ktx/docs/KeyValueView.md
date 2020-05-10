@@ -29,7 +29,7 @@ Assuming you already have configured jitpack and added the dependency for this l
 - `app:methodForValue` : The method that is executed and the return value of it is set as the _Value_ text. You need to provide full path of the method, that is including the package name, class (and subclasses if present), and then the method name (see [this](https://github.com/corphish/Widgets/blob/master/app/src/main/res/layout/activity_main.xml#L29)). If however the method is present in the Activity source which contains the layout containing the KeyValueView, then you can only specify the method name (see [this](https://github.com/corphish/Widgets/blob/master/app/src/main/res/layout/activity_main.xml#L19)). The method must return String and must be fairly simple. If you are doing some long running or complex task, then you might consider setting values programmatically.
 
 ### Methods
-Most of the methods are used up by properties. See the [source](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/src/main/java/com/corphish/widgets/ktx/KeyValueView.java) file for reference.
+Most of the methods are used up by properties. See the [source](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/src/main/java/com/corphish/widgets/ktx/KeyValueView.kt) file for reference.
 Additionally there are `getKeyTextView()` and `getValueTextView()` methods which return the respective TextViews, on which you can do other TextView actions that it supports.
 
 ### Screenshot
