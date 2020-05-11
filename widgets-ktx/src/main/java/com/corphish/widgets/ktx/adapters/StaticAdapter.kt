@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class StaticAdapter<T, V: RecyclerView.ViewHolder>(private val adaptable: StaticAdaptable<T, V>):
         RecyclerView.Adapter<V>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            adaptable.getViewHolder(LayoutInflater.from(parent.context).inflate(adaptable.getLayoutResource(), parent, false), adaptable.getListItems())
+            adaptable.getViewHolder(LayoutInflater.from(parent.context).inflate(adaptable.getLayoutResource(), parent, false))
 
     override fun getItemCount() = adaptable.getListItems().size
 
