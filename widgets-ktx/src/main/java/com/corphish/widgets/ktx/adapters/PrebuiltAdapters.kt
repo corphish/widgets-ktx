@@ -35,7 +35,7 @@ object PrebuiltAdapters {
      */
     fun keyValueItemAdapterWith(items: List<Pair<String, String>>) =
             object: StaticAdaptable<Pair<String, String>, BasicViewHolder>() {
-                override fun getLayoutResource() = R.layout.layout_item
+                override fun getLayoutResource() = R.layout.layout_key_value
                 override fun getListItems() = items
                 override fun getViewHolder(view: View) =
                         BasicViewHolder(view, listOf(R.id.key, R.id.value))
