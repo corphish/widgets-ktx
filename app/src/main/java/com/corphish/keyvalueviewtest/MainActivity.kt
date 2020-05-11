@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.corphish.widgets.ktx.adapters.Adapters
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Activity for demonstration
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
