@@ -20,6 +20,12 @@ import androidx.recyclerview.widget.RecyclerView
 open class BasicViewHolder(view: View, viewList: List<Int>) : RecyclerView.ViewHolder(view) {
     private val _views: MutableMap<Int, View> = HashMap()
 
+    /**
+     * Returns the view for given id mapped previously
+     * @param T Type of view
+     * @param id Id of view
+     * @return View
+     */
     @Suppress("UNCHECKED_CAST")
     @Nullable
     fun <T : View?> getViewById(@IdRes id: Int): T? {
