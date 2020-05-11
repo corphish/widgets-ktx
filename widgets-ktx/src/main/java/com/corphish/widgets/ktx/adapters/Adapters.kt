@@ -41,9 +41,16 @@ object Adapters {
         var notifyDataSetChanged: Boolean = false
     }
 
+    /**
+     * Lets you create a static adapter
+     * @param T Item type
+     * @param V ViewHolder type
+     * @param block In this block you can define the properties of ViewHolder
+     * @return Static Adapter created based on the set properties
+     */
     fun <T, V: RecyclerView.ViewHolder> newStaticAdapter(block: AdapterProperties<T, V>.() -> Unit): StaticAdapter<T, V> {
         val props = AdapterProperties<T, V>()
-        
+
         props.block()
 
         return object: StaticAdaptable<T, V>() {
