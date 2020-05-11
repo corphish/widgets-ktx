@@ -13,26 +13,26 @@ import androidx.recyclerview.widget.RecyclerView
  *
  * This does not support multiple data sets so please combine your multiple data items into one single class
  */
-interface StaticAdaptable<T, V: RecyclerView.ViewHolder> {
+abstract class StaticAdaptable<T, V: RecyclerView.ViewHolder> {
     /**
      * Layout resource for adapter view
      */
-    fun getLayoutResource(): Int
+    abstract fun getLayoutResource(): Int
 
     /**
      * List that is to be adapted
      */
-    fun getListItems(): List<T>
+    abstract fun getListItems(): List<T>
 
     /**
      * ViewHolder for RV
      */
-    fun getViewHolder(view: View, items: List<T>): V
+    abstract fun getViewHolder(view: View, items: List<T>): V
 
     /**
      * onBind adapter method interface
      */
-    fun bind(viewHolder: V, item: T)
+    abstract fun bind(viewHolder: V, item: T)
 
     /**
      * Finally builds the adapter
