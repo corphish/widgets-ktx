@@ -3,7 +3,7 @@ package com.corphish.keyvalueviewtest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.corphish.widgets.ktx.adapters.Adapters
+import com.corphish.widgets.ktx.adapters.PrebuiltAdapters
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val countryList = listOf("USA", "Spain", "Italy", "Russia", "France")
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = Adapters.singleItemAdapterWith(countryList)
+        recyclerView.adapter = PrebuiltAdapters.singleItemAdapterWith(countryList)
     }
 
     val text: String

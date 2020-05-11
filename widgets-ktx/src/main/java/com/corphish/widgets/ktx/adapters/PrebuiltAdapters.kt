@@ -9,7 +9,7 @@ import com.corphish.widgets.ktx.viewholders.BasicViewHolder
  * Provides ready-made adapters for use
  * Intended for demo but you can use it nevertheless
  */
-object Adapters {
+object PrebuiltAdapters {
     /**
      * Returns a recyclerView adapter which can display single line items
      * @param items Items to display

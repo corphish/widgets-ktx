@@ -55,8 +55,8 @@ val adapter = object: StaticAdaptable<String, ViewHolder>() {
 
 ### Prebuilt Adapters
 For convenience, 2 simple adapters are also included for common use cases. The adapters included are:
--  `Adapters.singleItemAdapterWith(items: List<String>)` - Provides adapter for displaying a single text item per line. Each entry of `items` are displayed per line.
--  `Adapters.keyValueItemAdapterWith(items: List<Pair<String, String>>)` - Provides adapter for displaying key-value pairs in layout similar to that of `KeyValueView`.
+-  `PrebuiltAdapters.singleItemAdapterWith(items: List<String>)` - Provides adapter for displaying a single text item per line. Each entry of `items` are displayed per line.
+-  `PrebuiltAdapters.keyValueItemAdapterWith(items: List<Pair<String, String>>)` - Provides adapter for displaying key-value pairs in layout similar to that of `KeyValueView`.
 
 #### Example
 In your activity's layout file, `activity_main.xml` in this case, declare your `RecyclerView` just like you would normally.
@@ -73,7 +73,7 @@ And then in your activity source file, `MainActivity.kt` in this case, simply de
 val countryList = listOf("USA", "Spain", "Italy", "Russia", "France")
 
 recyclerView.layoutManager = LinearLayoutManager(this)
-recyclerView.adapter = Adapters.singleItemAdapterWith(countryList)
+recyclerView.adapter = PrebuiltAdapters.singleItemAdapterWith(countryList)
 ```
 
 And that's it, you should a see vertical list displaying each country.
