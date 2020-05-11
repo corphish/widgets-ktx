@@ -17,7 +17,7 @@ allprojects {
 - Add the library dependency in __app level__ `build.gradle`.
 ```
 dependencies {
-	implementation 'com.github.corphish:widgets-ktx:0.2.0'
+	implementation 'com.github.corphish:widgets-ktx:0.3.0'
 }
 ```
 

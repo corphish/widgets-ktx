@@ -7,7 +7,7 @@ inner class SampleViewHolder(view: View): RecyclerView.ViewHolder(view) {
     internal val description: TextView = view.findViewById(R.id.viewDescription)
 }
 ```
-(In Java, to do the same thing you would need to write few more lines)
+(In Java, to do the same thing you would need to write few more lines).
 The `ViewHolder` is created in `RecyclerView.Adapter`'s `onCreateViewHolder` method like this.
 ```kotlin
 override fun onCreateViewHolder(parent: ViewGroup,
