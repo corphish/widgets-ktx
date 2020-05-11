@@ -53,6 +53,34 @@ val adapter = object: StaticAdaptable<String, ViewHolder>() {
 }
 ```
 
+### Creating Adapters the Kotlin way!
+The above described methods will work well in Java as well, with its own syntax of course (you might need to write a bit more, because you know, Java!). But with Kotlin, you can define an adapter by writing even lesser lines!
+With the `Adapters.newStaticAdapter{}` method, you can can do just that.
+```kotlin
+recyclerView.adapter = Adapters.newStaticAdapter<String, BasicViewHolder> { 
+    layoutResourceId = R.layout.layout_item
+    listItems = myList
+    viewHolder = { view -> BasicViewHolder(view, listOf(R.id.item)) }
+    binding = { viewHolder, item -> 
+        viewHolder.getViewById<TextView>(R.id.item)?.text = item
+    }
+}
+```
+Inside the block, you define the properties of your adapter. They will then be used to create the adapter. You will need to specify the types of your data and ViewHolder while calling the `newStaticAdapter` method. This helps in associating the necessary properties with given type.
+In generic terms, the method call looks like this.
+```kotlin
+Adapters.newStaticAdapter<T, V> {}
+```
+Information on the types:
+-  `T` - Indicates the type of data which will be presented in recyclerview.
+-  `V` - Indicates the ViewHolder type. This must be a _RecyclerView.ViewHolder or its subtype_.
+
+Now it's time for defining the properties.
+-  `layoutResourceId` - The resource id of the layout of your item.
+-  `listItems` - Data set you want to display, inform of list. The type of the list element depends on what you specified as `T`.
+-  `viewHolder` - Anonymous function which lets you build the ViewHolder of type that you specified earlier. It provides you with `view` which you can use to create ViewHolder.
+-  `binding` - Describe how the items will be bound to data in this anonymous function. It provides with the ViewHolder and item which you can use to populate the views.
+
 ### Prebuilt Adapters
 For convenience, 2 simple adapters are also included for common use cases. The adapters included are:
 -  `PrebuiltAdapters.singleItemAdapterWith(items: List<String>)` - Provides adapter for displaying a single text item per line. Each entry of `items` are displayed per line.
