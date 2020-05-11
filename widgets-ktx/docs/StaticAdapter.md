@@ -5,10 +5,10 @@ The `StaticAdaptable` provides an interface, with which an adapter can be built 
 
 ### Example
 ```kotlin
-val adapter = object: StaticAdaptable<String, ViewHolder> {
+val adapter = object: StaticAdaptable<String, ViewHolder>() {
                           override fun getLayoutResource() = R.layout.layout_item
                           override fun getListItems() = items
-                          override fun getViewHolder(view: View, items: List<String>) = ViewHolder(view, items)
+                          override fun getViewHolder(view: View) = ViewHolder(view)
           
                           override fun bind(viewHolder: ViewHolder, item: String) {
                               viewHolder.item.text = item
@@ -24,7 +24,7 @@ recyclerView.adapter = adapter
 You need to define the `StaticAdaptable` interface and build an adapter from it. Definition guidelines are as follows:
 -  `getLayoutResource()` - Supply the layout resource id of the item. This is used in the `onCreateViewHolder` method of RecyclerView adapter.
 -  `getListItems()` - Supply the list of data which is going to be displayed. Only single item type is supported, so if you need multiple data sets, please combine them in a data class and use the data class type instead.
--  `getViewHolder(view, item)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`. You can also use the `items` to work with the supplied data set inside ViewHolder (for example - Performing IOB checks).
+-  `getViewHolder(view)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`.
 -  `bind(viewHolder, item)` - Supply the binding logic here. You can retrieve the views from `viewHolder` and populate them with data present in `item`.
 -  `buildAdapter(notifyDataSet = false)` - Finally build the adapter, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
 
@@ -39,14 +39,14 @@ BasicViewHolder(view, listOf(R.id.key, R.id.value))
 
 You can supply this `ViewHolder` in `StaticAdaptable`'s `getViewHolder(view, items)` method.
 ```kotlin
-val adapter = object: StaticAdaptable<String, ViewHolder> {
+val adapter = object: StaticAdaptable<String, ViewHolder>() {
                           override fun getViewHolder(view: View, items: List<String>) = BasicViewHolder(view, listOf(R.id.key, R.id.value))
 }
 ```
 
 And then in `StaticAdaptable`'s `bind` method, access the `ViewHolder` like this.
 ```kotlin
-val adapter = object: StaticAdaptable<String, ViewHolder> {
+val adapter = object: StaticAdaptable<String, ViewHolder>() {
                           override fun bind(viewHolder: ViewHolder, item: String) {
                                 viewHolder.getViewById<TextView>(R.id.key)?.text = item
                           }
