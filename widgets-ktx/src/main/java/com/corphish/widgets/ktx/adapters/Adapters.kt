@@ -16,10 +16,10 @@ object Adapters {
      * @return Adapter
      */
     fun singleItemAdapterWith(items: List<String>) =
-            object: StaticAdaptable<String, BasicViewHolder> {
+            object: StaticAdaptable<String, BasicViewHolder>() {
                 override fun getLayoutResource() = R.layout.layout_item
                 override fun getListItems() = items
-                override fun getViewHolder(view: View, items: List<String>) =
+                override fun getViewHolder(view: View) =
                         BasicViewHolder(view, listOf(R.id.item))
 
                 override fun bind(viewHolder: BasicViewHolder, item: String) {
@@ -34,10 +34,10 @@ object Adapters {
      * @return Adapter
      */
     fun keyValueItemAdapterWith(items: List<Pair<String, String>>) =
-            object: StaticAdaptable<Pair<String, String>, BasicViewHolder> {
+            object: StaticAdaptable<Pair<String, String>, BasicViewHolder>() {
                 override fun getLayoutResource() = R.layout.layout_item
                 override fun getListItems() = items
-                override fun getViewHolder(view: View, items: List<Pair<String, String>>) =
+                override fun getViewHolder(view: View) =
                         BasicViewHolder(view, listOf(R.id.key, R.id.value))
 
                 override fun bind(viewHolder: BasicViewHolder, item: Pair<String, String>) {
