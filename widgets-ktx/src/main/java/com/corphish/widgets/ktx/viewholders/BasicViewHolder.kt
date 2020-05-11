@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @param view Inflated view of item
  * @param viewList List of view ids present in view
  */
-open class BasicViewHolder(view: View, viewList: List<Int>) : RecyclerView.ViewHolder(view) {
+open class BasicViewHolder(view: View, viewList: List<Int> = listOf()) : RecyclerView.ViewHolder(view) {
     private val _views: MutableMap<Int, View> = HashMap()
 
     /**
@@ -32,12 +32,22 @@ open class BasicViewHolder(view: View, viewList: List<Int>) : RecyclerView.ViewH
         return _views[id] as T
     }
 
+    /**
+     * Returns the view of this holder
+     * @param T Type of view
+     * @return View
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Nullable
+    fun <T : View?> getView(): T? {
+        return _views[ID_SELF] as T
+    }
+
     init {
+        _views[ID_SELF] = view
+
         for (id in viewList) {
-            if (id == ID_SELF)
-                _views[id] = view
-            else
-                _views[id] = view.findViewById(id)
+            _views[id] = view.findViewById(id)
         }
     }
 

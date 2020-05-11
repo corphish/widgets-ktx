@@ -5,7 +5,7 @@ import android.view.View
 /**
  * Extension of BaseViewHolder with clickable capabilities
  */
-class ClickableViewHolder(view: View, viewList: List<Int>, private val _onClickListener: (View, Int) -> Unit) : BasicViewHolder(view, viewList), View.OnClickListener {
+class ClickableViewHolder(view: View, viewList: List<Int> = listOf(), private val _onClickListener: (View, Int) -> Unit) : BasicViewHolder(view, viewList), View.OnClickListener {
     override fun onClick(v: View) {
         _onClickListener(v, adapterPosition)
     }
