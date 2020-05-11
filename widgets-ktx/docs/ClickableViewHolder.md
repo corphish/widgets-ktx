@@ -7,5 +7,5 @@ val clickableViewHolder = ClickableViewHolder(view, listOf(R.id.key, R.id.value)
 ```
 Apart from the `view` and `viewIds` parameter, it takes an additional `onClickListener` parameter to handle `onClick` events.
 The parameters of the `onClickListener` are:
-- `view` - View which is clicked.
-- `pos` - Position of item in the RecyclerView which is clicked (value is same as getAdapterPosition()).
+-  `view` - View which is clicked.
+-  `pos` - Position of item in the RecyclerView which is clicked (value is same as getAdapterPosition()).

@@ -22,11 +22,11 @@ recyclerView.adapter = adapter
 
 ### Usage
 You need to define the `StaticAdaptable` interface and build an adapter from it. Definition guidelines are as follows:
-- `getLayoutResource()` - Supply the layout resource id of the item. This is used in the `onCreateViewHolder` method of RecyclerView adapter.
-- `getListItems()` - Supply the list of data which is going to be displayed. Only single item type is supported, so if you need multiple data sets, please combine them in a data class and use the data class type instead.
-- `getViewHolder(view, item)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`. You can also use the `items` to work with the supplied data set inside ViewHolder (for example - Performing IOB checks).
-- `bind(viewHolder, item)` - Supply the binding logic here. You can retrieve the views from `viewHolder` and populate them with data present in `item`.
-- `buildAdapter(notifyDataSet = false)` - Finally build the adapter, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
+-  `getLayoutResource()` - Supply the layout resource id of the item. This is used in the `onCreateViewHolder` method of RecyclerView adapter.
+-  `getListItems()` - Supply the list of data which is going to be displayed. Only single item type is supported, so if you need multiple data sets, please combine them in a data class and use the data class type instead.
+-  `getViewHolder(view, item)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`. You can also use the `items` to work with the supplied data set inside ViewHolder (for example - Performing IOB checks).
+-  `bind(viewHolder, item)` - Supply the binding logic here. You can retrieve the views from `viewHolder` and populate them with data present in `item`.
+-  `buildAdapter(notifyDataSet = false)` - Finally build the adapter, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
 
 However, you still need to define a `ViewHolder` class and supply it to `StaticAdaptable`. Check the [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md) and [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md) to easily create `ViewHolder` objects.
 
@@ -55,8 +55,8 @@ val adapter = object: StaticAdaptable<String, ViewHolder> {
 
 ### Prebuilt Adapters
 For convenience, 2 simple adapters are also included for common use cases. The adapters included are:
-- `Adapters.singleItemAdapterWith(items: List<String>)` - Provides adapter for displaying a single text item per line. Each entry of `items` are displayed per line.
-- `Adapters.keyValueItemAdapterWith(items: List<Pair<String, String>>)` - Provides adapter for displaying key-value pairs in layout similar to that of `KeyValueView`.
+-  `Adapters.singleItemAdapterWith(items: List<String>)` - Provides adapter for displaying a single text item per line. Each entry of `items` are displayed per line.
+-  `Adapters.keyValueItemAdapterWith(items: List<Pair<String, String>>)` - Provides adapter for displaying key-value pairs in layout similar to that of `KeyValueView`.
 
 #### Example
 In your activity's layout file, `activity_main.xml` in this case, declare your `RecyclerView` just like you would normally.
