@@ -27,7 +27,7 @@ abstract class StaticAdaptable<T, V: RecyclerView.ViewHolder> {
     /**
      * ViewHolder for RV
      */
-    abstract fun getViewHolder(view: View, items: List<T>): V
+    abstract fun getViewHolder(view: View): V
 
     /**
      * onBind adapter method interface
