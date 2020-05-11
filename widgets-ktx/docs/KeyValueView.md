@@ -54,7 +54,7 @@ Additionally there are `getKeyTextView()` and `getValueTextView()` methods which
         app:keyText="Oh god please work?"
         app:valueText="Test value"
         app:keyStyle="bold"
-        app:methodForValue="com.corphish.keyvalueviewtest.SomeOtherClass.getSomeText"/>
+        app:methodForValue="com.corphish.keyvalueviewtest.TextHelper.getSomeText"/>
 ```  
 ###### Result
 ![](assets/kv.png) 
