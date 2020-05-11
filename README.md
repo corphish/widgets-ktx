@@ -24,3 +24,6 @@ dependencies {
 ## Widgets present
 - [KeyValueView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/KeyValueView.md)
 - [PlaceholderView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/PlaceholderView.md)
+- [StaticAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/StaticAdapter.md)
+- [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md)
+- [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md)
