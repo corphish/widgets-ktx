@@ -11,6 +11,11 @@ import com.corphish.widgets.ktx.viewholders.BasicViewHolder
  * Helper class to create adapters
  */
 object Adapters {
+    /**
+     * This class holds the properties of adapter
+     * @param T Type of item
+     * @param V Type of ViewHolder
+     */
     class AdapterProperties<T, V: RecyclerView.ViewHolder> {
         /**
          * Property for layout resource id
