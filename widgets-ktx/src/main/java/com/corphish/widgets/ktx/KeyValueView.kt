@@ -44,19 +44,7 @@ import androidx.core.widget.TextViewCompat
 class KeyValueView @JvmOverloads constructor(context: Context,
                                              attributeSet: AttributeSet? = null,
                                              defStyle: Int = 0) : LinearLayout(context, attributeSet, defStyle) {
-    /**
-     * Just in case user wants to use the full capabilities of a TextView or do advanced stuff
-     * @return Key
-     */
-    /**
-     * 2 text views
-     * We will work with these 2
-     */
     private var keyTextView: TextView
-    /**
-     * Just in case user wants to use the full capabilities of a TextView or do advanced stuff
-     * @return Value
-     */
     private var valueTextView: TextView
 
     // To handle sizes
