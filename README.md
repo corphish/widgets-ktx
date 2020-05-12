@@ -5,7 +5,7 @@ Collection of custom views or widgets that I use in my apps.
 Could be useful for others too.
 
 ## Setup
--  Add the jitpack repo in __root level__ `build.gradle` if not already.
+  - Add the jitpack repo in __root level__ `build.gradle` if not already.
 ```groovy
 allprojects {
 	repositories {
@@ -22,8 +22,8 @@ dependencies {
 ```
 
 ## Widgets present
--  [KeyValueView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/KeyValueView.md)
--  [PlaceholderView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/PlaceholderView.md)
--  [StaticAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/StaticAdapter.md)
--  [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md)
--  [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md)
+  - [KeyValueView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/KeyValueView.md)
+  - [PlaceholderView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/PlaceholderView.md)
+  - [StaticAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/StaticAdapter.md)
+  - [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md)
+  - [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md)
