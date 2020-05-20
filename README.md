@@ -1,5 +1,5 @@
 # Widgets
-[![](https://jitpack.io/v/corphish/widgets-ktx.svg)](https://jitpack.io/#corphish/widgets-ktx)
+[![](https://jitpack.io/v/corphish/widgets-ktx.svg)](https://jitpack.io/#corphish/widgets-ktx) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ad8c2abe4b8b4731b845b850995d0f03)](https://www.codacy.com/manual/d97.avinaba/widgets-ktx?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=corphish/widgets-ktx&amp;utm_campaign=Badge_Grade)
 
 Collection of custom views or widgets that I use in my apps.
 Could be useful for others too.
