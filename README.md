@@ -17,7 +17,7 @@ allprojects {
 - Add the library dependency in __app level__ `build.gradle`.
 ```groovy
 dependencies {
-	implementation 'com.github.corphish:widgets-ktx:0.3.1'
+	implementation 'com.github.corphish:widgets-ktx:0.3.2'
 }
 ```
 
