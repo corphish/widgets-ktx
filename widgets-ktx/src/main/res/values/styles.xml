@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MaterialButtonStyle.Positive" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">32dp</item>
+        <item name="android:textAppearance">?android:textAppearance</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconSize">16dp</item>
+    </style>
+
+    <style name="MaterialButtonStyle.Negative" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">32dp</item>
+        <item name="android:textAppearance">?android:textAppearance</item>
+        <item name="android:textStyle">bold</item>
+        <item name="strokeColor">?colorPrimary</item>
+        <item name="iconSize">16dp</item>
+        <item name="iconTint">?colorPrimary</item>
+    </style>
+
+    <style name="MaterialButtonStyle.Neutral" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">32dp</item>
+        <item name="android:textAppearance">?android:textAppearance</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconSize">16dp</item>
+    </style>
+</resources>
