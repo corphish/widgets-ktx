@@ -89,6 +89,15 @@ class SingleChoiceAlertDialog(context: Context) : BaseAlertDialog(context) {
             message.setText(messageResId)
         }
 
+        // Hide empty textviews
+        if (title.text.isEmpty()) {
+            title.visibility = View.GONE
+        }
+
+        if (message.text.isEmpty()) {
+            message.visibility = View.GONE
+        }
+
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = Adapters.newStaticAdapter<ChoiceItem, ClickableViewHolder> {
