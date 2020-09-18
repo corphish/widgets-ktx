@@ -20,7 +20,7 @@ data class ColorModel(
         fun getDarkerShade(times: Int = 1): Int {
                 var darkerColor = colorInt
 
-                for (i in 0..times) {
+                for (i in 1..times) {
                         darkerColor = ColorUtils.getDarkenedColor(darkerColor)
                 }
 
@@ -33,13 +33,13 @@ data class ColorModel(
          * @return Lightened color.
          */
         fun getLighterShade(times: Int = 1): Int {
-                var darkerColor = colorInt
+                var lighterColor = colorInt
 
-                for (i in 0..times) {
-                        darkerColor = ColorUtils.getLightenedColor(darkerColor)
+                for (i in 1..times) {
+                        lighterColor = ColorUtils.getLightenedColor(lighterColor)
                 }
 
-                return darkerColor
+                return lighterColor
         }
 
 }
