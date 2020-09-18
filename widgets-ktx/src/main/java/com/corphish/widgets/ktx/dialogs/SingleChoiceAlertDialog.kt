@@ -20,7 +20,6 @@ package com.corphish.widgets.ktx.dialogs
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -28,7 +27,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.corphish.widgets.ktx.R
 import com.corphish.widgets.ktx.adapters.Adapters
+import com.corphish.widgets.ktx.dialogs.properties.IconProperties
+import com.corphish.widgets.ktx.extensions.views.applyIconProperties
 import com.corphish.widgets.ktx.viewholders.ClickableViewHolder
+import com.google.android.material.button.MaterialButton
 
 /**
  * This alert dialog will show single choice
@@ -60,6 +62,11 @@ class SingleChoiceAlertDialog(context: Context) : BaseAlertDialog(context) {
      * Choice selection behavior
      */
     var dismissOnChoiceSelection = false
+
+    /**
+     * Icon properties.
+     */
+    var iconProperties = IconProperties()
 
     override fun show() {
         // Inflate specific view
@@ -95,7 +102,10 @@ class SingleChoiceAlertDialog(context: Context) : BaseAlertDialog(context) {
                     viewHolder.getViewById<TextView>(R.id.choiceTitle)?.setText(item.titleResId)
                 }
 
-                viewHolder.getViewById<ImageButton>(R.id.choiceIcon)?.setImageResource(item.iconResId)
+                val icon = viewHolder.getViewById<MaterialButton>(R.id.choiceIcon)
+                icon?.setIconResource(item.iconResId)
+                icon?.applyIconProperties(iconProperties)
+
                 viewHolder.getView<View>()?.setOnClickListener {
                     item.action()
                     if (dismissOnChoiceSelection) {
