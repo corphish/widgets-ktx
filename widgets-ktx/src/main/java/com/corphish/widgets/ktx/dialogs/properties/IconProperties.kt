@@ -27,6 +27,9 @@ data class IconProperties(
         /**
          * Background drawable of the icon.
          * Use this property to supply custom shapes.
+         * It is highly recommended that if you are using this property,
+         * you should define the color in the drawable itself, as the
+         * backgroundColor property is ignored if this is set.
          */
         val backgroundDrawable: Drawable? = null
 )
