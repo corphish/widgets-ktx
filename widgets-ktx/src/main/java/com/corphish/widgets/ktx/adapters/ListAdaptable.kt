@@ -90,6 +90,7 @@ abstract class ListAdaptable<T, V : RecyclerView.ViewHolder> {
      */
     fun buildMutableListAdapter(diffUtilCallback: DiffUtil.ItemCallback<T>, notifyDataSetChanged: Boolean = true): MutableListAdapter<T, V> {
         val adapter = MutableListAdapter(this, diffUtilCallback)
+        adapter.submitList(getListItems())
 
         if (notifyDataSetChanged) {
             adapter.notifyDataSetChanged()
