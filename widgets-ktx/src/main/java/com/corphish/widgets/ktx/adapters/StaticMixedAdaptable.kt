@@ -1,6 +1,7 @@
 package com.corphish.widgets.ktx.adapters
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Generic interface that allows definition of key RecyclerView adapter methods.
@@ -13,7 +14,7 @@ import android.view.View
  *
  * This does not support multiple data sets so please combine your multiple data items into one single class
  */
-abstract class StaticMixedAdaptable<T, V> {
+abstract class StaticMixedAdaptable<T, V: RecyclerView.ViewHolder> {
     /**
      * Layout resource for adapter view.
      */
@@ -38,4 +39,14 @@ abstract class StaticMixedAdaptable<T, V> {
      * onBind adapter method interface.
      */
     abstract fun bind(viewHolder: V, item: T)
+
+    /**
+     * Finally builds the adapter.
+     */
+    fun buildAdapter(notifyDataSetChange: Boolean = true): StaticMixedAdapter<T, V> {
+        val adapter = StaticMixedAdapter(this)
+        if (notifyDataSetChange) adapter.notifyDataSetChanged()
+
+        return adapter
+    }
 }
