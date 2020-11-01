@@ -1,14 +1,13 @@
 package com.corphish.keyvalueviewtest
 
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
-import com.corphish.widgets.ktx.dialogs.SingleChoiceAlertDialog
-import com.corphish.widgets.ktx.dialogs.properties.IconProperties
-import com.corphish.widgets.ktx.extensions.asColor
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.corphish.widgets.ktx.adapters.ImmutableListAdaptable
+import com.corphish.widgets.ktx.viewholders.BasicViewHolder
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Activity for demonstration
@@ -18,33 +17,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val iconColor = Color.WHITE
-        val background = DrawableCompat.wrap(ContextCompat.getDrawable(this, com.corphish.widgets.ktx.R.drawable.circle)!!)
-        DrawableCompat.setTint(background, Color.RED)
+        val sampleList = listOf(11, 5, 3, 8, 1, 9, 6, 2, 9, 16, 78, 14)
 
-        SingleChoiceAlertDialog(this).apply {
-            titleString = "Test"
-            iconProperties = IconProperties(
-                    iconColor = iconColor,
-                    backgroundDrawable = background
-            )
-            choiceList = listOf(
-                    SingleChoiceAlertDialog.ChoiceItem(
-                            titleString = "Option 1",
-                            iconResId = R.drawable.ic_sentiment_dissatisfied_black_128dp,
-                            action = {
-                                Toast.makeText(this@MainActivity, "Option 1", Toast.LENGTH_LONG).show()
-                            }
-                    ),
-                    SingleChoiceAlertDialog.ChoiceItem(
-                            titleString = "Option 2",
-                            iconResId = R.drawable.ic_sentiment_dissatisfied_black_128dp,
-                            action = {
-                                Toast.makeText(this@MainActivity, "Option 2", Toast.LENGTH_LONG).show()
-                            }
-                    )
-            )
-        }.show()
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = object : ImmutableListAdaptable<Int, BasicViewHolder>() {
+            override fun getLayoutResource(viewType: Int) = when(viewType) {
+                0 -> R.layout.layout_item_type_0
+                else -> R.layout.layout_item_type_1
+            }
+
+            override fun getListItems() = sampleList
+
+            override fun getViewHolder(view: View, viewType: Int): BasicViewHolder {
+                return when(viewType) {
+                    0 -> BasicViewHolder(view, listOf(R.id.text0))
+                    else -> BasicViewHolder(view, listOf(R.id.text1))
+                }
+            }
+
+            override fun bind(viewHolder: BasicViewHolder, position: Int) {
+                val textViewId = intArrayOf(R.id.text0, R.id.text1)[getViewType(position)]
+                viewHolder.getViewById<TextView>(textViewId)?.text = "${getListItems()[position]}"
+            }
+
+            override fun getViewType(position: Int) = position % 2
+        }.buildAdapter(true)
     }
 
     val text: String
