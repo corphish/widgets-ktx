@@ -100,11 +100,13 @@ class SingleChoiceAlertDialog(context: Context) : BaseAlertDialog(context) {
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = Adapters.newStaticAdapter<ChoiceItem, ClickableViewHolder> {
-            layoutResourceId = R.layout.layout_single_choice_item
-            viewHolder = { ClickableViewHolder(it, listOf(R.id.choiceIcon, R.id.choiceTitle)) }
+        recyclerView.adapter = Adapters.newImmutableListAdapter<ChoiceItem, ClickableViewHolder> {
+            layoutResourceId = { R.layout.layout_single_choice_item }
+            viewHolder = { it, _ -> ClickableViewHolder(it, listOf(R.id.choiceIcon, R.id.choiceTitle)) }
             listItems = choiceList
-            binding = { viewHolder, item ->
+            binding = { viewHolder, position ->
+                val item = listItems[position]
+
                 if (item.titleResId == 0) {
                     viewHolder.getViewById<TextView>(R.id.choiceTitle)?.text = item.titleString
                 } else {
