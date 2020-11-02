@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @param V RecyclerView ViewHolder
  * @property adaptable Adaptable from which the adapter will be built
  */
-class MutableListAdapter<T, V : RecyclerView.ViewHolder>(private val adaptable: ListAdaptable<T, V>,
+class MutableListAdapter<T, V : RecyclerView.ViewHolder>(private val adaptable: MutableListAdaptable<T, V>,
                                                          diffUtil: DiffUtil.ItemCallback<T>) :
         ListAdapter<T, V>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -24,11 +24,36 @@ class MutableListAdapter<T, V : RecyclerView.ViewHolder>(private val adaptable: 
                     viewType
             )
 
-    override fun getItemCount() = adaptable.getListItems().size
-
     override fun onBindViewHolder(holder: V, position: Int) {
-        adaptable.bind(holder, position)
+        adaptable.bind(holder, getItem(position), position)
     }
 
     override fun getItemViewType(position: Int) = adaptable.getViewType(position)
+
+    /**
+     * Updates the list to be displayed.
+     * Due to the way it is coded, in order for [DiffUtil.ItemCallback] to trigger,
+     * the new list passed to the [ListAdapter.submitList] method must be a new list.
+     * Which is why this method exists, so that it can supply a new updated list to
+     * the submitList method.
+     *
+     * In order to generate the new list, it is copied into a new ArrayList. If it
+     * is not a recommended approach for your use case, consider using the submitList
+     * method itself, but make sure to supply to a new list otherwise changes will not
+     * be reflected.
+     *
+     * For any other use cases, where the list supplied is a new list, you can either
+     * set the copy parameter as false or use  the submitList itself.
+     *
+     * @param list New list to update.
+     * @param copy Boolean indicating whether or not to copy the supplied list to a
+     *             new list by default or not.
+     */
+    fun updateList(list: List<T>, copy: Boolean = true) {
+        // Make a new list if copy is enabled.
+        val newList = if (copy) ArrayList(list) else list
+
+        // Submit the new list.
+        submitList(newList)
+    }
 }

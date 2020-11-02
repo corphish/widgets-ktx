@@ -83,14 +83,14 @@ object Adapters {
 
         props.block()
 
-        return object : ListAdaptable<T, V>() {
+        return object : ImmutableListAdaptable<T, V>() {
             override fun getLayoutResource(viewType: Int) = props.layoutResourceId(viewType)
             override fun getListItems() = props.listItems
             override fun getViewHolder(view: View, viewType: Int) = props.viewHolder(view, viewType)
             override fun bind(viewHolder: V, position: Int) {
                 props.binding(viewHolder, position)
             }
-        }.buildImmutableListAdapter(props.notifyDataSetChanged)
+        }.buildAdapter(props.notifyDataSetChanged)
     }
 
 }

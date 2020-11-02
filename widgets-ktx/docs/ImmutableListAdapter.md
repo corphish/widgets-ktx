@@ -1,7 +1,7 @@
 # ImmutableListAdapter
 You would probably agree with the fact that `RecyclerView` is a widely used widget. But, for every `RecyclerView`, there must be an `Adapter`. And writing adapters (even for small layouts) can be annoying and repetitive task.
-The `ListAdaptable` makes your life easier by minimising the need for creating adapter classes. It provides a way of defining adapters to work with _immutable as well as mutable data sets_ without creating a class for it.
-The `ListAdaptable` provides an interface, with which an adapter for both mutable and immutable data sets can be built and used.
+The `ImmutableListAdaptable` makes your life easier by minimising the need for creating adapter classes. It provides a way of defining adapters to work with _immutable as well as mutable data sets_ without creating a class for it.
+The `ImmutableListAdaptable` provides an interface, with which an adapter for both mutable and immutable data sets can be built and used.
 
 ### Example
 ```kotlin
@@ -13,7 +13,7 @@ val adapter = object: ListAdaptable<String, ViewHolder>() {
                           override fun bind(viewHolder: ViewHolder, position: Int) {
                               viewHolder.item.text = getListItems()[position]
                           }
-                      }.buildImmutableListAdapter(true) // Or buildMutableListAdapter
+                      }.buildAdapter(true)
 ```
 You will need to define a `ViewHolder` class which will define the views, and that's it, you have an `Adapter` ready to be attached to a `RecyclerView`.
 ```kotlin
@@ -23,12 +23,11 @@ recyclerView.adapter = adapter
 ### Usage
 You need to define the `ListAdaptable` interface and build an adapter from it. Definition guidelines are as follows:
 -  `getLayoutResource(viewType)` - Supply the layout resource id of the item. This is used in the `onCreateViewHolder` method of RecyclerView adapter. If you want to have different layouts for different items, you can use the `viewType` parameter to check and supply the ids accordingly. You can define a behavior on how view types are defined based on the item position by overriding the `getViewType()` method.
--  `getListItems()` - Supply the list of data which is going to be displayed. Only single item type is supported, so if you need multiple data sets, please combine them in a data class and use the data class type instead.
+-  `getListItems()` - Supply the immutable list of data which is going to be displayed. Only single item type is supported, so if you need multiple data sets, please combine them in a data class and use the data class type instead.
 -  `getViewHolder(view, viewType)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`. If you need to have different ViewHolders for different view types, use the `viewType` parameter to detect and supply accordingly. In case you are planning to supply multiple ViewHolders, make sure to define the ViewHolder type of the Adaptable to be a generic one.
 -  `getViewType(position)` - You need not override this if you are not planning to use view types, otherwise you can supply a logic on how a type of view is determined based on item position. This is a helper method, not used internally, but meant to be used by you in binding.
 -  `bind(viewHolder, position)` - Supply the binding logic here. You can retrieve the views from `viewHolder` and populate them with `getListItems()[position]`.
--  `buildImmutableListAdapter(notifyDataSetChanged = false)` - Builds the adapter for working with immutable lists, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
--  `buildMutableListAdapter(diffUtilItemCallback, notifyDataSetChanged = false)` - Builds the adapter for working with mutable lists, which you can use it in a recyclerView. A `DiffUtil.ItemCallback` definition needs to passed so that item changes can be handled. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
+-  `buildMutableListAdapter(notifyDataSetChanged = false)` - Builds the adapter for working with immutable lists, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
 
 However, you still need to define a `ViewHolder` class and supply it to `ListAdaptable`. Check the [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md) and [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md) to easily create `ViewHolder` objects.
 
@@ -41,12 +40,12 @@ BasicViewHolder(view, listOf(R.id.key, R.id.value))
 
 You can supply this `ViewHolder` in `ListAdaptable`'s `getViewHolder(view, items)` method.
 ```kotlin
-val adapter = object: ListAdaptable<String, ViewHolder>() {
+val adapter = object: ImmutableListAdaptable<String, ViewHolder>() {
                           override fun getViewHolder(view: View, viewType: Int) = BasicViewHolder(view, listOf(R.id.key, R.id.value))
 }
 ```
 
-And then in `ListAdaptable`'s `bind` method, access the `ViewHolder` like this.
+And then in `ImmutableListAdaptable`'s `bind` method, access the `ViewHolder` like this.
 ```kotlin
 val adapter = object: ListAdaptable<String, ViewHolder>() {
                           override fun bind(viewHolder: ViewHolder, position: Int) {

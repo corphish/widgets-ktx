@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @param V RecyclerView ViewHolder
  * @property adaptable Adaptable from which the adapter will be built
  */
-class ImmutableListAdapter<T, V: RecyclerView.ViewHolder>(private val adaptable: ListAdaptable<T, V>):
+class ImmutableListAdapter<T, V: RecyclerView.ViewHolder>(private val adaptable: ImmutableListAdaptable<T, V>):
         RecyclerView.Adapter<V>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             adaptable.getViewHolder(

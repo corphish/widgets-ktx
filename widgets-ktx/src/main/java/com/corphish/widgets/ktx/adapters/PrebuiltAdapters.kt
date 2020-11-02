@@ -17,7 +17,7 @@ object PrebuiltAdapters {
      * @return Adapter.
      */
     fun singleItemAdapterWith(items: List<String>) =
-            object: ListAdaptable<String, BasicViewHolder>() {
+            object: ImmutableListAdaptable<String, BasicViewHolder>() {
                 override fun getLayoutResource(viewType: Int) = R.layout.layout_item
                 override fun getListItems() = items
                 override fun getViewHolder(view: View, viewType: Int) =
@@ -26,7 +26,7 @@ object PrebuiltAdapters {
                 override fun bind(viewHolder: BasicViewHolder, position: Int) {
                     viewHolder.getViewById<TextView>(R.id.item)?.text = getListItems()[position]
                 }
-            }.buildImmutableListAdapter(true)
+            }.buildAdapter(true)
 
     /**
      * Returns a recyclerView adapter which can display a pair of items.
@@ -36,7 +36,7 @@ object PrebuiltAdapters {
      * @return Adapter.
      */
     fun keyValueItemAdapterWith(items: List<Pair<String, String>>) =
-            object: ListAdaptable<Pair<String, String>, BasicViewHolder>() {
+            object: ImmutableListAdaptable<Pair<String, String>, BasicViewHolder>() {
                 override fun getLayoutResource(viewType: Int) = R.layout.layout_key_value
                 override fun getListItems() = items
                 override fun getViewHolder(view: View, viewType: Int) =
@@ -47,5 +47,5 @@ object PrebuiltAdapters {
                     viewHolder.getViewById<TextView>(R.id.key)?.text = item.first
                     viewHolder.getViewById<TextView>(R.id.value)?.text = item.second
                 }
-            }.buildImmutableListAdapter(true)
+            }.buildAdapter(true)
 }

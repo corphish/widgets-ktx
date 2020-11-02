@@ -5,16 +5,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Generic interface that allows definition of key RecyclerView adapter methods
- * This is done so that creating multiple adapters can be avoided
- * This is intended to be used with non-changing data only
- * While it is possible to work with changing data sets with variation
+ * Generic interface that allows definition of key RecyclerView adapter methods.
+ * This is done so that creating multiple adapters can be avoided.
+ * This is intended to be used with non-changing data only.
+ * While it is possible to work with changing data sets with variation by changing
+ * the list at the supplied reference and then calling adapter update methods, but
+ * it is not recommended to do so. To work with mutable data sets, please use
+ * [MutableListAdapter].
+ *
  * @param T Indicates the type of data, list of which shall be presented
  * @param V ViewHolder type
  *
  * This does not support multiple data sets so please combine your multiple data items into one single class
  */
-abstract class ListAdaptable<T, V : RecyclerView.ViewHolder> {
+abstract class ImmutableListAdaptable<T, V : RecyclerView.ViewHolder> {
     /**
      * Layout resource for adapter view.
      *
@@ -70,27 +74,8 @@ abstract class ListAdaptable<T, V : RecyclerView.ViewHolder> {
      *                            immediately after adapter creation.
      * @return Adapter.
      */
-    fun buildImmutableListAdapter(notifyDataSetChanged: Boolean = true): ImmutableListAdapter<T, V> {
+    fun buildAdapter(notifyDataSetChanged: Boolean = true): ImmutableListAdapter<T, V> {
         val adapter = ImmutableListAdapter(this)
-
-        if (notifyDataSetChanged) {
-            adapter.notifyDataSetChanged()
-        }
-
-        return adapter
-    }
-
-    /**
-     * Builds a mutable list adapter, which can be supplied to the RecyclerView.
-     *
-     * @param notifyDataSetChanged Optional parameter indicating whether the adapter
-     *                            method `notifyDataSetChanged()` needs to be called
-     *                            immediately after adapter creation.
-     * @return Adapter.
-     */
-    fun buildMutableListAdapter(diffUtilCallback: DiffUtil.ItemCallback<T>, notifyDataSetChanged: Boolean = true): MutableListAdapter<T, V> {
-        val adapter = MutableListAdapter(this, diffUtilCallback)
-        adapter.submitList(getListItems())
 
         if (notifyDataSetChanged) {
             adapter.notifyDataSetChanged()
