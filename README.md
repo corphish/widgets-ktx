@@ -17,13 +17,17 @@ allprojects {
 - Add the library dependency in __app level__ `build.gradle`.
 ```groovy
 dependencies {
-	implementation 'com.github.corphish:widgets-ktx:0.3.2'
+	implementation 'com.github.corphish:widgets-ktx:0.4.0'
 }
 ```
 
 ## Widgets present
--   [KeyValueView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/KeyValueView.md)
--   [PlaceholderView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/PlaceholderView.md)
--   [StaticAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/StaticAdapter.md)
--   [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md)
--   [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md)
+- Views - Various commonly used views wrapped for easy use.
+    -   [KeyValueView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/KeyValueView.md)
+    -   [PlaceholderView](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/PlaceholderView.md)
+- RecyclerView adapters - Working with RecyclerView is now easier than ever as these classes eliminates the needs for creating separate adapter classes.
+    -   [ImmutableListAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ImmutableListAdapter.md)
+    -   [MutableListAdapter](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/MutableListAdapter.md)
+- RecyclerView ViewHolders - Let's you define a ViewHolder in one line, once again eliminating the need for creating separate classes for ViewHolders.
+    -   [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md)
+    -   [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md)
