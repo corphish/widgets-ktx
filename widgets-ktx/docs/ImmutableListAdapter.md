@@ -5,7 +5,7 @@ The `ImmutableListAdaptable` provides an interface, with which an adapter for bo
 
 ### Example
 ```kotlin
-val adapter = object: ListAdaptable<String, ViewHolder>() {
+val adapter = object: ImmutableListAdaptable<String, ViewHolder>() {
                           override fun getLayoutResource(viewType: Int) = R.layout.layout_item
                           override fun getListItems() = items
                           override fun getViewHolder(view: View, viewType: Int) = ViewHolder(view)
@@ -27,18 +27,18 @@ You need to define the `ListAdaptable` interface and build an adapter from it. D
 -  `getViewHolder(view, viewType)` - Supply the ViewHolder which defines the layout views. Build your ViewHolder with the `view` parameter which is the inflated view of id that you supplied in `getLayoutResource()`. If you need to have different ViewHolders for different view types, use the `viewType` parameter to detect and supply accordingly. In case you are planning to supply multiple ViewHolders, make sure to define the ViewHolder type of the Adaptable to be a generic one.
 -  `getViewType(position)` - You need not override this if you are not planning to use view types, otherwise you can supply a logic on how a type of view is determined based on item position. This is a helper method, not used internally, but meant to be used by you in binding.
 -  `bind(viewHolder, position)` - Supply the binding logic here. You can retrieve the views from `viewHolder` and populate them with `getListItems()[position]`.
--  `buildMutableListAdapter(notifyDataSetChanged = false)` - Builds the adapter for working with immutable lists, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
+-  `buildAdapter(notifyDataSetChanged = false)` - Builds the adapter for working with immutable lists, which you can use it in a recyclerView. An optional boolean parameter can be passed which can ask the adapter to invoke its `notifyDataSetChanged()` method immediately if value is true.
 
-However, you still need to define a `ViewHolder` class and supply it to `ListAdaptable`. Check the [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md) and [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md) to easily create `ViewHolder` objects.
+However, you still need to define a `ViewHolder` class and supply it to `ImmutableListAdaptable`. Check the [BasicViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/BasicViewHolder.md) and [ClickableViewHolder](https://github.com/corphish/widgets-ktx/blob/master/widgets-ktx/docs/ClickableViewHolder.md) to easily create `ViewHolder` objects.
 
-### Using BasicViewHolder/ClickableViewHolder in ListAdaptable
+### Using BasicViewHolder/ClickableViewHolder in ImmutableListAdaptable
 `BasicViewHolder` and `ClickableViewHolder` makes it really easy to define ViewHolder objects without creating classes.
 To create a `BasicViewHolder`, something like this can be done.
 ```kotlin
 BasicViewHolder(view, listOf(R.id.key, R.id.value))
 ```
 
-You can supply this `ViewHolder` in `ListAdaptable`'s `getViewHolder(view, items)` method.
+You can supply this `ViewHolder` in `ImmutableListAdaptable`'s `getViewHolder(view, items)` method.
 ```kotlin
 val adapter = object: ImmutableListAdaptable<String, ViewHolder>() {
                           override fun getViewHolder(view: View, viewType: Int) = BasicViewHolder(view, listOf(R.id.key, R.id.value))
@@ -47,7 +47,7 @@ val adapter = object: ImmutableListAdaptable<String, ViewHolder>() {
 
 And then in `ImmutableListAdaptable`'s `bind` method, access the `ViewHolder` like this.
 ```kotlin
-val adapter = object: ListAdaptable<String, ViewHolder>() {
+val adapter = object: ImmutableListAdaptable<String, ViewHolder>() {
                           override fun bind(viewHolder: ViewHolder, position: Int) {
                                 viewHolder.getViewById<TextView>(R.id.key)?.text = getListItems()[position]
                           }
