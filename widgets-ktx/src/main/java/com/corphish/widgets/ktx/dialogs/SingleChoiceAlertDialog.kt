@@ -98,7 +98,6 @@ class SingleChoiceAlertDialog(context: Context) : BaseAlertDialog(context) {
             message.visibility = View.GONE
         }
 
-        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = Adapters.newImmutableListAdapter<ChoiceItem, ClickableViewHolder> {
             layoutResourceId = { R.layout.layout_single_choice_item }
