@@ -60,6 +60,19 @@
 
         <!-- Animation properties -->
         <attr name="animation" format="reference"/>
+        <attr name="animationHeight" format="dimension"/>
+        <attr name="animationWidth" format="dimension" />
+        <attr name="animationLooped" format="boolean" />
+        <attr name="animationScaleType">
+            <flag name="center" value="0" />
+            <flag name="centerCrop" value="1" />
+            <flag name="centerInside" value="2" />
+            <flag name="fitCenter" value="3" />
+            <flag name="fitEnd" value="4" />
+            <flag name="fitStart" value="5" />
+            <flag name="fitXY" value="6" />
+            <flag name="matrix" value="7" />
+        </attr>
 
         <attr name="titleSize" format="dimension" />
         <attr name="descriptionSize" format="dimension" />

@@ -17,6 +17,7 @@
 
 package com.corphish.widgets.ktx
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Typeface
@@ -59,6 +60,18 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
     // To handle sizes
     private val dpi: Float
 
+    // Scale type map
+    val scaleTypes = mapOf(
+            0 to ImageView.ScaleType.CENTER,
+            1 to ImageView.ScaleType.CENTER_CROP,
+            2 to ImageView.ScaleType.CENTER_INSIDE,
+            3 to ImageView.ScaleType.FIT_CENTER,
+            4 to ImageView.ScaleType.FIT_END,
+            5 to ImageView.ScaleType.FIT_START,
+            6 to ImageView.ScaleType.FIT_XY,
+            7 to ImageView.ScaleType.MATRIX,
+    )
+
     private fun processProperties(context: Context, attributeSet: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.PlaceholderView)
         val count = typedArray.indexCount
@@ -92,7 +105,25 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
             if (property == R.styleable.PlaceholderView_descriptionStyle) {
                 setDescriptionTypeface(descriptionTypeface, typedArray.getInt(property, -1))
             }
+            if (property == R.styleable.PlaceholderView_animationHeight) {
+                setAnimationHeight(typedArray.getDimensionPixelSize(property, animationView.layoutParams.height))
+                continue
+            }
+            if (property == R.styleable.PlaceholderView_animationWidth) {
+                setAnimationWidth(typedArray.getDimensionPixelSize(property, animationView.layoutParams.width))
+                continue
+            }
+            if (property == R.styleable.PlaceholderView_animationLooped) {
+                val toLoop = typedArray.getBoolean(property, true)
+                animationView.repeatCount = if (toLoop) ValueAnimator.INFINITE else 0
+            }
+            if (property == R.styleable.PlaceholderView_animationScaleType) {
+                animationView.scaleType = scaleTypes[
+                        typedArray.getInt(property, 2)
+                ]
+            }
         }
+
         typedArray.recycle()
     }
 
@@ -172,6 +203,24 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
      */
     fun setDescriptionTypeface(typeface: Typeface?, style: Int) {
         descriptionTextView.setTypeface(typeface, style)
+    }
+
+    /**
+     * Sets image height
+     * @param height Height
+     */
+    fun setAnimationHeight(@Dimension height: Int) {
+        animationView.layoutParams.height = height
+        animationView.requestLayout()
+    }
+
+    /**
+     * Sets image width
+     * @param width Width
+     */
+    fun setAnimationWidth(@Dimension width: Int) {
+        animationView.layoutParams.width = width
+        animationView.requestLayout()
     }
 
     /**
