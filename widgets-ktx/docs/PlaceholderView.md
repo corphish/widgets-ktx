@@ -28,6 +28,10 @@ To center this view in the layout, or to make it appear in the center of the scr
 - `app:titleText` : Sets the title text.
 - `app:descriptionText` : Sets the description text.
 - `app:animation` : Raw resource id for the lottie animation.
+- `app:animationLooped` : Boolean indicating whether animation must be looped or not.
+- `app:animationScaleType` : Scale type of the animation view.
+- `app:animationWidth` : Animation width.
+- `app:animationHeight` : Animation height.
 - `app:titleSize` : Sets the text size of title. Default is __18sp__.
 - `app:descriptionSize` : Sets the text size of description. Default is __12sp__.
 - `app:titleStyle` : Sets the text style of title.

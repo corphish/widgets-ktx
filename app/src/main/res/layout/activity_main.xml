@@ -4,11 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.corphish.keyvalueviewtest.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         android:id="@+id/recyclerView" />
+
+    <com.corphish.widgets.ktx.PlaceholderView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:animation="@raw/empty"
+        app:animationLooped="false"
+        app:animationScaleType="centerCrop"
+        app:titleText="Such empty!"
+        android:layout_centerInParent="true"
+        app:descriptionText="Do stuff to see stuff here?"/>
 </RelativeLayout>
