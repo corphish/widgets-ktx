@@ -20,18 +20,16 @@ package com.corphish.widgets.ktx
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.Dimension
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.appcompat.widget.AppCompatImageView
+import androidx.annotation.*
+import com.airbnb.lottie.LottieAnimationView
 
 /**
  * Placeholder view to show in case there is nothing to show in certain situations
@@ -56,7 +54,7 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
      * Make the views used user accessible for advanced stuff
      * @return imageview
      */
-    val imageView: AppCompatImageView
+    val animationView: LottieAnimationView
 
     // To handle sizes
     private val dpi: Float
@@ -82,21 +80,9 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
                 setDescriptionSize(typedArray.getDimension(property, 12 * dpi))
                 continue
             }
-            if (property == R.styleable.PlaceholderView_viewTint) {
-                setViewTint(typedArray.getColor(property, titleTextView.currentTextColor))
-                continue
-            }
-            if (property == R.styleable.PlaceholderView_srcCompat) {
-                val drawable = typedArray.getResourceId(property, R.drawable.ic_sentiment_neutral)
-                imageResourceId = drawable
-                continue
-            }
-            if (property == R.styleable.PlaceholderView_imageHeight) {
-                setImageHeight(typedArray.getDimensionPixelSize(property, imageView.layoutParams.height))
-                continue
-            }
-            if (property == R.styleable.PlaceholderView_imageWidth) {
-                setImageWidth(typedArray.getDimensionPixelSize(property, imageView.layoutParams.width))
+            if (property == R.styleable.PlaceholderView_animation) {
+                val drawable = typedArray.getResourceId(property, 0)
+                animationResourceId = drawable
                 continue
             }
             if (property == R.styleable.PlaceholderView_titleStyle) {
@@ -144,19 +130,15 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
             titleTextView.text = value
         }
 
-    @DrawableRes
-    var imageResourceId: Int = R.drawable.ic_sentiment_neutral
+    @RawRes
+    var animationResourceId: Int = 0
         set(value) {
-            imageView.setImageResource(value)
+            if (value != 0) {
+                animationView.setAnimation(value)
+            } else {
+                animationView.visibility = View.GONE
+            }
         }
-
-    /**
-     * Sets the drawable for the imageView
-     * @param drawable Drawable to set in the imageView
-     */
-    fun setImageDrawable(drawable: Drawable) {
-        imageView.setImageDrawable(drawable)
-    }
 
     /**
      * Sets Title size
@@ -206,40 +188,16 @@ class PlaceholderView @JvmOverloads constructor(context: Context,
     val descriptionTypeface: Typeface
         get() = descriptionTextView.typeface
 
-    /**
-     * Sets image height
-     * @param height Height
-     */
-    fun setImageHeight(@Dimension height: Int) {
-        imageView.layoutParams.height = height
-        imageView.requestLayout()
-    }
-
-    /**
-     * Sets image width
-     * @param width Width
-     */
-    fun setImageWidth(@Dimension width: Int) {
-        imageView.layoutParams.width = width
-        imageView.requestLayout()
-    }
-
-    /**
-     * Sets tint of this view
-     * @param color Tint color
-     */
-    fun setViewTint(@ColorInt color: Int) {
-        imageView.setColorFilter(color)
-        titleTextView.setTextColor(color)
-        descriptionTextView.setTextColor(color)
-    }
 
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_placeholder_view, this)
         descriptionTextView = findViewById(R.id.placeholder_desc_tv)
         titleTextView = findViewById(R.id.placeholder_title_tv)
-        imageView = findViewById(R.id.placeholder_image)
+        animationView = findViewById(R.id.animationView)
         dpi = Resources.getSystem().displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT.toFloat()
         processProperties(context, attributeSet)
+
+        // Default scale type for animation
+        animationView.scaleType = ImageView.ScaleType.CENTER_INSIDE
     }
 }

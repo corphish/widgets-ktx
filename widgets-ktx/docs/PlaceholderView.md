@@ -27,18 +27,15 @@ To center this view in the layout, or to make it appear in the center of the scr
 ### Properties Supported
 - `app:titleText` : Sets the title text.
 - `app:descriptionText` : Sets the description text.
-- `app:srcCompat` : Drawable resource id for the image (see the screenshot below).
-- `app:imageHeight` : Sets the image height. Default is __wrap_content__.
-- `app:imageWidth` : Sets the image width. Default is __wrap_content__.
+- `app:animation` : Raw resource id for the lottie animation.
 - `app:titleSize` : Sets the text size of title. Default is __18sp__.
 - `app:descriptionSize` : Sets the text size of description. Default is __12sp__.
-- `app:viewTint` : Sets the tint of the view.
 - `app:titleStyle` : Sets the text style of title.
 - `app:descriptionStyle` : Sets the text style of description.
 
 ### Methods
 Most of the methods are used up by properties. See the [source](https://github.com/corphish/Widgets/blob/master/widgets/src/main/java/com/corphish/widgets/PlaceholderView.java) file for reference.
-Additionally there are `getTitleTextView()`, `getDescriptionTextView()` and `getImageView()` methods which return the respective TextViews and AppCompatImageViews, on which you can do other actions that it supports.
+Additionally there are `getTitleTextView()`, `getDescriptionTextView()` and `getAnimationView()` methods which return the respective TextViews and AppCompatImageViews, on which you can do other actions that it supports.
 
 ### Screenshot
 ###### Code
@@ -59,14 +56,11 @@ Additionally there are `getTitleTextView()`, `getDescriptionTextView()` and `get
         app:descriptionText="But John Cena! He could be here"
         app:titleStyle="bold"
         app:titleSize="20sp"
-        app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_128dp"
+        app:animation="@raw/empty"
         app:descriptionSize="14sp"
-        app:viewTint="#cdcdcd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>
-```  
-###### Result
-![](assets/pv.png) 
+```
