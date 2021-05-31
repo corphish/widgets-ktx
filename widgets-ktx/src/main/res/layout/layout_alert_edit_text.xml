@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/widgets_ktx_horizontal_margin">
 
     <TextView
         android:id="@+id/alertTitle"
@@ -20,7 +20,7 @@
         android:id="@+id/alertMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/widgets_ktx_horizontal_margin"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +47,8 @@
         style="@style/MaterialButtonStyle.Positive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/widgets_ktx_vertical_margin"
+        android:layout_marginTop="@dimen/widgets_ktx_horizontal_margin"
         android:text="@android:string/ok"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,8 +60,8 @@
         style="@style/MaterialButtonStyle.Negative"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/widgets_ktx_horizontal_margin"
+        android:layout_marginEnd="@dimen/widgets_ktx_vertical_margin"
         android:text="@android:string/cancel"
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/positiveButton"

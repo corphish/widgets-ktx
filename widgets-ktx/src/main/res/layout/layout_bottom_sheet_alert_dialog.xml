@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/defaultMargin"
+        android:layout_margin="@dimen/widgetsKTXMargin"
         android:orientation="vertical">
 
         <TextView
@@ -21,7 +21,7 @@
             android:textSize="@dimen/titleSize"
             android:id="@+id/title"
             android:text="My Title"
-            android:padding="@dimen/defaultPadding"
+            android:padding="@dimen/widgetsKTXPadding"
             android:textAppearance="?android:textAppearance"/>
 
         <TextView
@@ -29,11 +29,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/message"
             android:text="@string/lorem"
-            android:padding="@dimen/defaultPadding"/>
+            android:padding="@dimen/widgetsKTXPadding"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:padding="@dimen/defaultPadding"
+            android:padding="@dimen/widgetsKTXPadding"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatButton
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:padding="@dimen/defaultPadding"
+                android:padding="@dimen/widgetsKTXPadding"
                 app:backgroundTint="#2345AA"
                 android:textColor="@android:color/white"
                 android:id="@+id/neutral"
